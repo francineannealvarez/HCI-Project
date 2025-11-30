@@ -1,0 +1,713 @@
+/* ========================================
+   REUSABLE COMPONENTS - VIBRANT DREAMY PEACH 🎨
+   Contains: Cards, Buttons, Icons, Typography
+   ======================================== */
+
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-normal);
+}
+
+
+/* ===== TYPOGRAPHY CLASSES ===== */
+
+.heading-1 {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+}
+
+.heading-2 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.heading-3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+}
+
+.text-label {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-md);
+}
+
+
+/* ===== ICON CLASSES ===== */
+
+.icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.icon-sm {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+}
+
+
+/* ===== CARD COMPONENT ===== */
+
+.card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-xl);
+}
+
+
+/* ===== BUTTON COMPONENTS ===== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: 12px var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Button Variants */
+.btn--primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+}
+
+.btn--primary:hover {
+    background: linear-gradient(135deg, var(--color-dark-purple), var(--color-primary));
+    box-shadow: var(--shadow-lg);
+}
+
+.btn--secondary {
+    background: linear-gradient(135deg, var(--color-pink), var(--color-accent));
+    color: var(--color-white);
+}
+
+.btn--secondary:hover {
+    background: linear-gradient(135deg, var(--color-dark-pink), var(--color-peach-dark));
+}
+
+.btn--outline {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-primary);
+}
+
+.btn--outline:hover {
+    background: linear-gradient(135deg, rgba(93, 78, 109, 0.1), rgba(139, 122, 168, 0.1));
+    border-color: var(--color-dark-purple);
+}
+
+.btn--ghost {
+    background: rgba(93, 78, 109, 0.08);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+}
+
+.btn--ghost:hover {
+    background: rgba(93, 78, 109, 0.15);
+}
+
+.btn-close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    color: var(--color-white);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.btn-close:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ===== DATE PICKER MODAL (REUSABLE!) ===== */
+
+.date-picker-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 31, 61, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.2s ease;
+}
+
+.date-picker-overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.date-picker-modal {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(42, 31, 61, 0.3);
+    padding: var(--spacing-xl);
+    min-width: 280px;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.date-picker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+}
+
+.date-picker-month {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    cursor: pointer;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.date-picker-month:hover {
+    background: rgba(139, 122, 168, 0.1);
+}
+
+.date-picker-nav {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.date-picker-nav-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: rgba(139, 122, 168, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+}
+
+.date-picker-nav-btn:hover {
+    background: rgba(139, 122, 168, 0.2);
+    transform: scale(1.05);
+}
+
+.date-picker-nav-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Month/Year Selector View */
+.date-picker-selector {
+    display: none;
+}
+
+.date-picker-selector.active {
+    display: block;
+}
+
+.date-picker-year-header {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-secondary);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 2px solid rgba(139, 122, 168, 0.1);
+    margin-bottom: var(--spacing-md);
+}
+
+.date-picker-months {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+}
+
+.date-picker-month-btn {
+    padding: var(--spacing-md);
+    border: 2px solid rgba(139, 122, 168, 0.2);
+    background: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.date-picker-month-btn:hover {
+    background: linear-gradient(135deg, rgba(139, 122, 168, 0.1), rgba(255, 186, 168, 0.1));
+    border-color: var(--color-primary);
+}
+
+.date-picker-month-btn.selected {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.date-picker-years {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.date-picker-years::-webkit-scrollbar {
+    width: 6px;
+}
+
+.date-picker-years::-webkit-scrollbar-track {
+    background: rgba(139, 122, 168, 0.1);
+    border-radius: var(--radius-sm);
+}
+
+.date-picker-years::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    border-radius: var(--radius-sm);
+}
+
+.date-picker-year-btn {
+    padding: var(--spacing-md);
+    border: none;
+    background: rgba(139, 122, 168, 0.05);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.date-picker-year-btn:hover {
+    background: rgba(139, 122, 168, 0.15);
+}
+
+.date-picker-year-btn.selected {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+}
+
+/* Calendar Days View */
+.date-picker-calendar {
+    display: block;
+}
+
+.date-picker-calendar.hidden {
+    display: none;
+}
+
+.date-picker-days-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.date-picker-day-name {
+    text-align: center;
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-secondary);
+    padding: var(--spacing-sm);
+}
+
+.date-picker-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    margin-bottom: var(--spacing-md);
+}
+
+.date-picker-day {
+    aspect-ratio: 1;
+    border: none;
+    background: var(--color-white);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.date-picker-day:hover {
+    background: linear-gradient(135deg, rgba(139, 122, 168, 0.15), rgba(255, 186, 168, 0.15));
+}
+
+.date-picker-day.other-month {
+    color: rgba(93, 78, 109, 0.3);
+    pointer-events: none;
+}
+
+.date-picker-day.today {
+    background: linear-gradient(135deg, rgba(139, 122, 168, 0.2), rgba(255, 186, 168, 0.2));
+    border: 2px solid var(--color-primary);
+    font-weight: var(--font-weight-bold);
+}
+
+.date-picker-day.selected {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: var(--color-white);
+}
+
+.date-picker-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(139, 122, 168, 0.1);
+}
+
+.date-picker-clear,
+.date-picker-today {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.date-picker-clear {
+    background: rgba(232, 93, 117, 0.1);
+    color: var(--color-error);
+}
+
+.date-picker-clear:hover {
+    background: var(--color-error);
+    color: var(--color-white);
+}
+
+.date-picker-today {
+    background: linear-gradient(135deg, var(--color-cyan), var(--color-chart-cyan));
+    color: var(--color-white);
+}
+
+.date-picker-today:hover {
+    background: linear-gradient(135deg, var(--color-dark-cyan), var(--color-cyan));
+}
+
+/* ===== STAT CARD COMPONENT ===== */
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-icon .icon {
+    color: var(--color-white);
+}
+
+/* Stat Icon Color Variants */
+.stat-icon--purple {
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-chart-purple));
+}
+
+.stat-icon--pink {
+    background: linear-gradient(135deg, var(--color-pink), var(--color-chart-pink));
+}
+
+.stat-icon--cyan {
+    background: linear-gradient(135deg, var(--color-cyan), var(--color-chart-cyan));
+}
+
+.stat-icon--star {
+    background: linear-gradient(135deg, var(--color-star), var(--color-accent));
+}
+
+.stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+}
+
+.stat-change--positive {
+    color: var(--color-success);
+}
+
+.stat-message {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+}
+
+
+/* ===== QUOTE CARD COMPONENT ===== */
+
+.quote-card {
+    background: var(--color-card);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transition: all var(--transition-base);
+    overflow: hidden;
+}
+
+/* Subtle shimmer effect on quote card */
+.quote-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        transparent 70%
+    );
+    animation: shimmer 8s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.quote-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(42, 31, 61, 0.25), var(--shadow-glow);
+}
+
+.quote-card.hidden {
+    display: none;
+}
+
+.quote-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+}
+
+.quote-icon {
+    font-size: 26px;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3));
+}
+
+.quote-text {
+    font-size: var(--font-size-md);
+    font-style: italic;
+    color: var(--color-text-light);
+    line-height: var(--line-height-relaxed);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ===== ACTIVITY LIST COMPONENT ===== */
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.activity-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+}
+
+.activity-item:hover {
+    background: linear-gradient(135deg, rgba(139, 122, 168, 0.08), rgba(255, 186, 168, 0.08));
+    transform: translateX(4px);
+}
+
+.activity-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+}
+
+/* Activity Icon Color Variants */
+.activity-icon--purple {
+    background: linear-gradient(135deg, rgba(139, 122, 168, 0.2), rgba(155, 143, 216, 0.2));
+}
+
+.activity-icon--purple .icon-sm {
+    color: var(--color-primary);
+}
+
+.activity-icon--pink {
+    background: linear-gradient(135deg, rgba(255, 158, 191, 0.25), rgba(255, 179, 198, 0.25));
+}
+
+.activity-icon--pink .icon-sm {
+    color: var(--color-dark-pink);
+}
+
+.activity-icon--cyan {
+    background: linear-gradient(135deg, rgba(127, 200, 214, 0.25), rgba(95, 184, 214, 0.25));
+}
+
+.activity-icon--cyan .icon-sm {
+    color: var(--color-dark-cyan);
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-title {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.activity-subtitle {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+}
+
+.activity-time {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+
+/* ===== UTILITY CLASSES ===== */
+
+.hidden {
+    display: none !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+.gap-lg {
+    gap: var(--spacing-lg);
+}

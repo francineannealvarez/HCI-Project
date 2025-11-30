@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Study Sessions</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/studysession.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Logo -->
+        <div class="logo-section">
+            <div class="logo-container">
+                <div class="logo-icon">📚</div>
+                <div class="logo-text">
+                    <h1 class="logo-title">StudyMate</h1>
+                    <p class="logo-subtitle">Study Sessions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Greeting -->
+        <div class="user-greeting">
+            <div class="user-avatar">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="user-name">Hi, Francine!</p>
+                <p class="user-status">Ready to study?</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="studysession.html" class="nav-item nav-item--active">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Study Sessions</span>
+            </a>
+            <a href="tasksgoals.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 11 12 14 22 4"></polyline>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                <span>Tasks & Goals</span>
+            </a>
+            <a href="calendar.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Calendar</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="page-header">
+            <h2 class="heading-1">Study Sessions</h2>
+            <p class="text-secondary">Track your study time with Pomodoro timer</p>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="session-content-grid">
+            <!-- Left Side: Timer & Log -->
+            <div class="session-main">
+                <!-- Tab Navigation -->
+                <div class="session-tabs">
+                    <button class="session-tab session-tab--active" data-tab="pomodoro">
+                        Pomodoro Timer
+                    </button>
+                    <button class="session-tab" data-tab="log">
+                        Log Study Hours
+                    </button>
+                </div>
+
+                <!-- Tab Content Container -->
+                <div class="tab-content-wrapper">
+                    <!-- Pomodoro Timer Tab -->
+                    <div class="tab-content tab-content--active" id="pomodoro-tab">
+                        <div class="card timer-card">
+                            <!-- Focus Time Badge -->
+                            <div class="focus-badge">
+                                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span>Focus Time</span>
+                            </div>
+
+                            <!-- Timer Circle -->
+                            <div class="timer-circle-container">
+                                <svg class="timer-circle" viewBox="0 0 200 200">
+                                    <!-- Background Circle -->
+                                    <circle
+                                        class="timer-circle-bg"
+                                        cx="100"
+                                        cy="100"
+                                        r="85"
+                                    />
+                                    <!-- Progress Circle -->
+                                    <circle
+                                        class="timer-circle-progress"
+                                        cx="100"
+                                        cy="100"
+                                        r="85"
+                                        id="timerProgress"
+                                    />
+                                </svg>
+                                <!-- Timer Display -->
+                                <div class="timer-display" id="timerDisplay">00:00:00</div>
+                            </div>
+
+                            <!-- Preset Buttons -->
+                            <div class="timer-presets">
+                                <button class="preset-btn" data-minutes="25">25 min</button>
+                                <button class="preset-btn" data-minutes="15">15 min</button>
+                                <button class="preset-btn" data-minutes="5">5 min</button>
+                                <button class="preset-btn" data-minutes="custom">Custom</button>
+                            </div>
+
+                            <!-- Custom Input (Hidden by default) -->
+                            <div class="custom-input-container hidden" id="customInputContainer">
+                                <label class="input-label">Enter Time (HH:MM:SS)</label>
+                                <div class="time-input-group">
+                                    <input 
+                                        type="text" 
+                                        class="time-segment" 
+                                        id="hoursSegment"
+                                        maxlength="2"
+                                        placeholder="00"
+                                        value="00"
+                                    />
+                                    <span class="time-separator">:</span>
+                                    <input 
+                                        type="text" 
+                                        class="time-segment" 
+                                        id="minutesSegment"
+                                        maxlength="2"
+                                        placeholder="00"
+                                        value="00"
+                                    />
+                                    <span class="time-separator">:</span>
+                                    <input 
+                                        type="text" 
+                                        class="time-segment" 
+                                        id="secondsSegment"
+                                        maxlength="2"
+                                        placeholder="00"
+                                        value="00"
+                                    />
+                                </div>
+                                <button class="btn btn--secondary btn-sm" id="setCustomTime">Set Time</button>
+                            </div>
+
+                            <!-- Timer Controls -->
+                            <div class="timer-controls">
+                                <button class="btn btn--primary" id="startBtn">
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                    Start
+                                </button>
+                                <button class="btn btn--outline btn-disabled" id="resetBtn" disabled>
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="1 4 1 10 7 10"></polyline>
+                                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                                    </svg>
+                                    Reset
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log Study Hours Tab -->
+                    <div class="tab-content" id="log-tab">
+                        <div class="card log-card">
+                            <h3 class="heading-2">Log Study Hours</h3>
+
+                            <div class="log-form">
+                                <div class="form-group">
+                                    <label class="input-label">Subject</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-input" 
+                                        id="subjectInput"
+                                        placeholder="e.g., Mathematics"
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="input-label">Hours Studied</label>
+                                    <input 
+                                        type="number" 
+                                        class="form-input" 
+                                        id="hoursInput"
+                                        placeholder="e.g., 2.5"
+                                        min="0.1"
+                                        step="0.1"
+                                    />
+                                </div>
+
+                                <button class="btn btn--primary btn-full btn-disabled" id="logHoursBtn" disabled>
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    Log Hours
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Study History -->
+            <div class="session-sidebar">
+                <div class="card history-card">
+                    <h3 class="heading-2">Study History</h3>
+                    <div class="history-list" id="historyList">
+                        <!-- Hardcoded Initial Entries -->
+                        <div class="history-item">
+                            <div class="history-content">
+                                <p class="history-subject">Mathematics</p>
+                                <p class="history-time">45 minutes</p>
+                            </div>
+                            <span class="history-date">Nov 27, 2024</span>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-content">
+                                <p class="history-subject">Physics</p>
+                                <p class="history-time">30 minutes</p>
+                            </div>
+                            <span class="history-date">Nov 27, 2024</span>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-content">
+                                <p class="history-subject">Computer Science</p>
+                                <p class="history-time">60 minutes</p>
+                            </div>
+                            <span class="history-date">Nov 26, 2024</span>
+                        </div>
+
+                        <div class="history-item">
+                            <div class="history-content">
+                                <p class="history-subject">English Literature</p>
+                                <p class="history-time">40 minutes</p>
+                            </div>
+                            <span class="history-date">Nov 26, 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Dialog -->
+        <div class="notification hidden" id="notification">
+            <div class="notification-content">
+                <span class="notification-icon">🎉</span>
+                <span class="notification-text" id="notificationText"></span>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/studysession.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMate - Study Calendar</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/calendar.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Logo -->
+        <div class="logo-section">
+            <div class="logo-container">
+                <div class="logo-icon">📚</div>
+                <div class="logo-text">
+                    <h1 class="logo-title">StudyMate</h1>
+                    <p class="logo-subtitle">Study Calendar</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Greeting -->
+        <div class="user-greeting">
+            <div class="user-avatar">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                </svg>
+            </div>
+            <div>
+                <p class="user-name">Hi, Francine!</p>
+                <p class="user-status">Ready to study?</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-menu">
+            <a href="dashboard.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="studysession.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>Study Sessions</span>
+            </a>
+            <a href="tasksgoals.html" class="nav-item">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 11 12 14 22 4"></polyline>
+                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                </svg>
+                <span>Tasks & Goals</span>
+            </a>
+            <a href="calendar.html" class="nav-item nav-item--active">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>Calendar</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="page-header">
+            <h2 class="heading-1">Events Calendar</h2>
+            <p class="text-secondary">Keep track of important dates and events</p>
+        </header>
+
+        <!-- Content Grid -->
+        <div class="calendar-content-grid">
+            <!-- Left Side: Calendar -->
+            <div class="calendar-main">
+                <div class="card calendar-card">
+                    <!-- Month Navigation -->
+                    <div class="month-navigation">
+                        <button class="month-nav-btn" id="prevMonthBtn">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+                        <h3 class="current-month" id="currentMonth">November 2025</h3>
+                        <button class="month-nav-btn" id="nextMonthBtn">
+                            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Calendar Grid -->
+                    <div class="calendar-grid">
+                        <!-- Day Headers -->
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+                        
+                        <!-- Calendar Days (Generated by JS) -->
+                        <div id="calendarDays"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Events -->
+            <div class="calendar-sidebar">
+                <!-- Add Event Button -->
+                <button class="btn btn--secondary btn-full" id="addEventBtn">
+                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Event
+                </button>
+
+                <!-- Add Event Form -->
+                <div class="card add-event-card hidden" id="addEventCard">
+                    <h3 class="heading-2">New Event</h3>
+
+                    <div class="form-group">
+                        <label class="input-label">Event Title</label>
+                        <input 
+                            type="text" 
+                            class="form-input" 
+                            id="eventTitleInput"
+                            placeholder="e.g., Math Lecture"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">Subject</label>
+                        <input 
+                            type="text" 
+                            class="form-input" 
+                            id="eventSubjectInput"
+                            placeholder="e.g., Mathematics"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">Time</label>
+                        <input 
+                            type="text" 
+                            class="form-input" 
+                            id="eventTimeInput"
+                            placeholder="e.g., 10:00 - 11:30"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">Date</label>
+                        <div class="date-input-wrapper">
+                            <input 
+                                type="text" 
+                                class="form-input" 
+                                id="eventDateInput"
+                                placeholder="e.g., 15"
+                            />
+                            <button class="date-picker-btn" id="datePickerBtn">
+                                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="input-label">Color</label>
+                        <div class="color-picker">
+                            <button class="color-option color-option--purple active" data-color="purple"></button>
+                            <button class="color-option color-option--pink" data-color="pink"></button>
+                            <button class="color-option color-option--cyan" data-color="cyan"></button>
+                            <button class="color-option color-option--orange" data-color="orange"></button>
+                            <button class="color-option color-option--green" data-color="green"></button>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="btn btn--secondary btn-disabled" id="addEventSubmitBtn" disabled>
+                            Add
+                        </button>
+                        <button class="btn btn--outline" id="cancelEventBtn">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events -->
+                <div class="card upcoming-events-card">
+                    <h3 class="heading-2">Upcoming Events</h3>
+                    <div class="upcoming-events-list" id="upcomingEventsList">
+                        <!-- Events generated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Dialog -->
+        <div class="notification hidden" id="notification">
+            <div class="notification-content">
+                <span class="notification-icon">🎉</span>
+                <span class="notification-text" id="notificationText"></span>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/calendar.js"></script>
+</body>
+</html>

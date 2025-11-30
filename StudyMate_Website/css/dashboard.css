@@ -1,0 +1,343 @@
+/* ========================================
+   DASHBOARD.CSS - Dashboard-Specific Styles Only 📊
+   Contains: Chart components, Daily quote, Stats grid layout
+   ======================================== */
+
+/* ===== STATS GRID LAYOUT (Dashboard only) ===== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* ===== DAILY QUOTE SECTION (Dashboard only) ===== */
+
+.daily-quote-section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.daily-quote-section .quote-card {
+    width: 100%;
+}
+
+/* ===== CONTENT GRID (Dashboard only) ===== */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ===== BAR CHART COMPONENTS (Dashboard only) ===== */
+
+.chart-card {
+    overflow: visible;
+}
+
+.chart-card .card-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.chart-container {
+    height: 320px;
+    overflow: visible;
+    transition: height var(--transition-base);
+    margin-bottom: var(--spacing-md); /* Reduced space below chart */
+}
+
+.chart-container.hidden {
+    height: 0;
+    overflow: hidden;
+}
+
+/* CHART WRAPPER */
+.bar-chart {
+    height: 280px;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 16px;
+    position: relative;
+}
+
+/* Y-AXIS CONTAINER */
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    position: relative;
+}
+
+/* Y-AXIS LABEL "Hours" */
+.y-axis::before {
+    content: 'Hours';
+    position: absolute;
+    top: 50%;
+    left: -8px;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.y-axis-label {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+    text-align: right;
+    line-height: 1;
+}
+
+/* BARS CONTAINER */
+.bars-container {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: var(--spacing-sm);
+    padding-bottom: 40px;
+    border-left: 2px solid rgba(93, 78, 109, 0.3);
+    border-bottom: 2px solid rgba(93, 78, 109, 0.3);
+    height: 100%;
+}
+
+/* GRID LINES - exactly 11 lines for 0-10 scale */
+.bars-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 40px;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent calc(10% - 1px),
+        rgba(93, 78, 109, 0.15) calc(10% - 1px),
+        rgba(93, 78, 109, 0.15) 10%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* BAR ITEMS */
+.bar-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    min-width: 0;
+    max-width: 80px;
+    z-index: 1;
+    height: 100%;
+}
+
+.bar {
+    width: 100%;
+    max-width: 60px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all var(--transition-base);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: visible; /* Allow tooltip to show outside */
+    /* HEIGHT WILL BE SET BY JAVASCRIPT DYNAMICALLY */
+    /* The height is a percentage of the parent container */
+}
+
+.bar:hover {
+    opacity: 0.9;
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* BAR COLORS - Gradient based on day */
+.bar-day-mon .bar { background: linear-gradient(to top, #FFD166, #FFE699); }
+.bar-day-tue .bar { background: linear-gradient(to top, #FF9770, #FFAD94); }
+.bar-day-wed .bar { background: linear-gradient(to top, #FF9EBF, #FFB8D9); }
+.bar-day-thu .bar { background: linear-gradient(to top, #9B8FD8, #AFA4E8); }
+.bar-day-fri .bar { background: linear-gradient(to top, #7FC8D6, #9EDAE6); }
+.bar-day-sat .bar { background: linear-gradient(to top, #5FB8D6, #7FCEE6); }
+.bar-day-sun .bar { background: linear-gradient(to top, #A8E6CF, #BFFCD9); }
+
+/* DAY LABELS - OUTSIDE chart area, below the bars */
+.bar-label {
+    font-size: 13px;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    position: absolute;
+    bottom: -30px;
+    white-space: nowrap;
+}
+
+/* ===== CHART TOGGLE BUTTON ===== */
+
+.chevron {
+    transition: transform var(--transition-base);
+}
+
+.chevron.rotated {
+    transform: rotate(180deg);
+}
+
+/* ===== BAR CHART TOOLTIP ===== */
+
+.bar-tooltip {
+    position: absolute;
+    bottom: 100%; /* Changed from calc(100% + 16px) */
+    left: 50%;
+    transform: translateX(-50%) translateY(-12px); /* Added translateY for spacing */
+    background: linear-gradient(135deg, #3D2F4D, #5D4E6D);
+    color: white;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(42, 31, 61, 0.4);
+    min-width: 200px;
+    text-align: left;
+}
+
+.bar-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: #3D2F4D;
+}
+
+.bar-tooltip.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-16px); /* Adjusted for smooth animation */
+}
+
+.bar-tooltip-subject {
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: 4px;
+    font-size: var(--font-size-base);
+}
+
+.bar-tooltip-hours {
+    font-size: var(--font-size-sm);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.bar-tooltip-divider {
+    margin: 8px 0;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ===== BAR CHART HOVER EFFECTS ===== */
+
+.bar-chart.hovering .bar-item:not(.active) .bar {
+    opacity: 0.3;
+    filter: grayscale(30%);
+}
+
+.bar-item.active .bar {
+    opacity: 1 !important;
+    filter: grayscale(0%) !important;
+    transform: translateY(-6px);
+}
+
+/* ===== CHART SUMMARY STATS ===== */
+
+.chart-summary-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, rgba(168, 155, 207, 0.08), rgba(255, 232, 224, 0.08));
+    border-radius: var(--radius-md);
+    margin-top: 0; /* No extra margin on top */
+}
+
+.summary-stat {
+    text-align: center;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-base);
+}
+
+.summary-stat:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.summary-stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.summary-stat-value.total { color: #9B8FD8; }
+.summary-stat-value.productive { color: #FF9EBF; }
+.summary-stat-value.average { color: #7FC8D6; }
+
+.summary-stat-label {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ===== RESPONSIVE - DASHBOARD SPECIFIC ===== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container {
+        height: 280px;
+    }
+    
+    .bar-chart {
+        height: 220px;
+        gap: var(--spacing-sm);
+    }
+    
+    .bar-item {
+        max-width: 60px;
+    }
+    
+    .bar {
+        max-width: 50px;
+    }
+    
+    .chart-summary-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+}
