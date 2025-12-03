@@ -280,19 +280,23 @@ document.addEventListener('DOMContentLoaded', function() {
         completedTodayCount.textContent = completedCount;
     }
     
-    
     /* ===== ADD TASK FORM TOGGLE ===== */
     
     addTaskBtn.addEventListener('click', function() {
         addTaskForm.classList.toggle('hidden');
         
+        // Toggle the active state class
         if (!addTaskForm.classList.contains('hidden')) {
+            addTaskBtn.classList.add('form-active');
             taskTitleInput.focus();
+        } else {
+            addTaskBtn.classList.remove('form-active');
         }
     });
     
     cancelTaskBtn.addEventListener('click', function() {
         addTaskForm.classList.add('hidden');
+        addTaskBtn.classList.remove('form-active');
         
         taskTitleInput.value = '';
         taskSubjectInput.value = '';
@@ -300,7 +304,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         checkAddTaskInputs();
     });
-    
     
     /* ===== DATE PICKER FOR TASK DATE ===== */
     

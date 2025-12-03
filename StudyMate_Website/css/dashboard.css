@@ -1,5 +1,5 @@
 /* ========================================
-   DASHBOARD.CSS - Dashboard-Specific Styles Only 📊
+                DASHBOARD.CSS 
    Contains: Chart components, Daily quote, Stats grid layout
    ======================================== */
 
@@ -45,7 +45,7 @@
     height: 320px;
     overflow: visible;
     transition: height var(--transition-base);
-    margin-bottom: var(--spacing-md); /* Reduced space below chart */
+    margin-bottom: var(--spacing-md); 
 }
 
 .chart-container.hidden {
@@ -53,7 +53,7 @@
     overflow: hidden;
 }
 
-/* CHART WRAPPER */
+/* ===== CHART WRAPPER ===== */
 .bar-chart {
     height: 280px;
     display: grid;
@@ -62,7 +62,7 @@
     position: relative;
 }
 
-/* Y-AXIS CONTAINER */
+/* ===== Y-AXIS CONTAINER ===== */
 .y-axis {
     display: flex;
     flex-direction: column;
@@ -71,7 +71,7 @@
     position: relative;
 }
 
-/* Y-AXIS LABEL "Hours" */
+/* ===== Y-AXIS LABEL "Hours" ===== */
 .y-axis::before {
     content: 'Hours';
     position: absolute;
@@ -92,7 +92,7 @@
     line-height: 1;
 }
 
-/* BARS CONTAINER */
+/* ===== BARS CONTAINER ===== */
 .bars-container {
     position: relative;
     display: flex;
@@ -105,7 +105,7 @@
     height: 100%;
 }
 
-/* GRID LINES - exactly 11 lines for 0-10 scale */
+/* ===== GRID LINES ===== */
 .bars-container::before {
     content: '';
     position: absolute;
@@ -124,7 +124,7 @@
     z-index: 0;
 }
 
-/* BAR ITEMS */
+/* ===== BAR ITEMS ===== */
 .bar-item {
     flex: 1;
     display: flex;
@@ -146,9 +146,7 @@
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: visible; /* Allow tooltip to show outside */
-    /* HEIGHT WILL BE SET BY JAVASCRIPT DYNAMICALLY */
-    /* The height is a percentage of the parent container */
+    overflow: visible; 
 }
 
 .bar:hover {
@@ -157,7 +155,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* BAR COLORS - Gradient based on day */
+/* ===== BAR COLORS - Gradient based on day ===== */
 .bar-day-mon .bar { background: linear-gradient(to top, #FFD166, #FFE699); }
 .bar-day-tue .bar { background: linear-gradient(to top, #FF9770, #FFAD94); }
 .bar-day-wed .bar { background: linear-gradient(to top, #FF9EBF, #FFB8D9); }
@@ -190,9 +188,9 @@
 
 .bar-tooltip {
     position: absolute;
-    bottom: 100%; /* Changed from calc(100% + 16px) */
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(-12px); /* Added translateY for spacing */
+    transform: translateX(-50%) translateY(-12px); 
     background: linear-gradient(135deg, #3D2F4D, #5D4E6D);
     color: white;
     padding: 14px 18px;
@@ -220,7 +218,7 @@
 
 .bar-tooltip.show {
     opacity: 1;
-    transform: translateX(-50%) translateY(-16px); /* Adjusted for smooth animation */
+    transform: translateX(-50%) translateY(-16px); 
 }
 
 .bar-tooltip-subject {
@@ -262,7 +260,7 @@
     padding: var(--spacing-lg);
     background: linear-gradient(135deg, rgba(168, 155, 207, 0.08), rgba(255, 232, 224, 0.08));
     border-radius: var(--radius-md);
-    margin-top: 0; /* No extra margin on top */
+    margin-top: 0;
 }
 
 .summary-stat {
@@ -339,5 +337,437 @@
     .chart-summary-stats {
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
+    }
+}
+
+/* ========================================
+   MOBILE-OPTIMIZED DASHBOARD CSS 📱
+   Smart layout for dashboard on mobile
+   ======================================== */
+
+/* ===== TABLET ADJUSTMENTS (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-lg);
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+}
+
+/* ===== MOBILE OPTIMIZATIONS (max-width: 768px) ===== */
+@media (max-width: 768px) {
+    
+    /* ===== LOGO & USER GREETING - Compact Header ===== */
+    .logo-section {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 22px;
+    }
+    
+    .logo-title {
+        font-size: 20px;
+    }
+    
+    .logo-subtitle {
+        font-size: var(--font-size-sm);
+    }
+    
+    .user-greeting {
+        display: flex !important;
+        margin-bottom: var(--spacing-md);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .user-avatar .icon {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .user-name {
+        font-size: var(--font-size-sm);
+    }
+    
+    .user-status {
+        font-size: 11px;
+    }
+    
+    /* ===== NAVIGATION - Horizontal with Hover Labels ===== */
+    .nav-menu {
+        flex-direction: row !important;
+        justify-content: space-between;
+        gap: 0;
+        padding: var(--spacing-sm) 0;
+        overflow-x: visible;
+    }
+    
+    .nav-item {
+        flex: 1;
+        flex-direction: column;
+        gap: 4px;
+        padding: var(--spacing-sm);
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        min-height: 56px;
+    }
+    
+    .nav-item .icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    /* Hide text by default */
+    .nav-item span {
+        position: absolute;
+        bottom: 4px;
+        font-size: 10px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+        pointer-events: none;
+        white-space: nowrap;
+    }
+    
+    /* Show text on hover */
+    .nav-item:hover span,
+    .nav-item--active span {
+        opacity: 1;
+    }
+    
+    /* Active state - always show text */
+    .nav-item--active {
+        flex-direction: column;
+    }
+    
+    .nav-item--active span {
+        position: relative;
+        bottom: auto;
+        opacity: 1;
+    }
+    
+    /* ===== PAGE HEADER - Compact ===== */
+    .page-header {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .heading-1 {
+        font-size: var(--font-size-xl);
+    }
+    
+    .page-header .text-secondary {
+        font-size: 12px;
+    }
+    
+    /* ===== STATS GRID - 2x2 Square Grid ===== */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    /* ===== STAT CARDS - Compact Squares ===== */
+    .stat-card {
+        padding: var(--spacing-md);
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .stat-icon .icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .text-label {
+        font-size: 11px;
+        margin-bottom: 4px;
+    }
+    
+    .stat-value {
+        font-size: var(--font-size-lg);
+        margin-bottom: 4px;
+        line-height: 1;
+    }
+    
+    .stat-change,
+    .stat-message {
+        font-size: 10px;
+    }
+    
+    .stat-change .icon-sm {
+        width: 12px;
+        height: 12px;
+    }
+    
+    /* ===== DAILY QUOTE - Slim ===== */
+    .daily-quote-section {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .quote-card {
+        padding: var(--spacing-md);
+    }
+    
+    .quote-header {
+        gap: var(--spacing-xs);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .quote-icon {
+        font-size: 18px;
+    }
+    
+    .heading-3 {
+        font-size: var(--font-size-base);
+    }
+    
+    .quote-text {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    
+    /* ===== CONTENT GRID ===== */
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* ===== CHART CARD - Optimized ===== */
+    .chart-card {
+        padding: var(--spacing-md);
+    }
+    
+    .chart-card .card-header {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .chart-card .heading-2 {
+        font-size: var(--font-size-base);
+        margin-bottom: 2px;
+    }
+    
+    .chart-card .text-secondary {
+        font-size: 11px;
+    }
+    
+    .btn--ghost {
+        padding: 4px var(--spacing-sm);
+        font-size: 11px;
+    }
+    
+    /* ===== CHART CONTAINER - Reduced Left Margin ===== */
+    .chart-container {
+        height: 220px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .bar-chart {
+        height: 180px;
+        grid-template-columns: 28px 1fr;
+        gap: 8px;
+    }
+    
+    /* ===== Y-AXIS - Minimal Space ===== */
+    .y-axis {
+        padding-bottom: 28px;
+    }
+    
+    .y-axis::before {
+        font-size: 9px;
+        left: -4px;
+    }
+    
+    .y-axis-label {
+        font-size: 9px;
+    }
+    
+    /* ===== BARS ===== */
+    .bars-container {
+        padding-bottom: 28px;
+        gap: 3px;
+    }
+    
+    .bar-item {
+        max-width: 42px;
+    }
+    
+    .bar {
+        max-width: 38px;
+    }
+    
+    .bar-label {
+        font-size: 10px;
+        bottom: -24px;
+    }
+    
+    /* ===== TOOLTIP ===== */
+    .bar-tooltip {
+        padding: 8px 12px;
+        font-size: 10px;
+        min-width: 140px;
+    }
+    
+    .bar-tooltip-subject {
+        font-size: 11px;
+        margin-bottom: 2px;
+    }
+    
+    .bar-tooltip-hours {
+        font-size: 10px;
+    }
+    
+    /* ===== SUMMARY STATS - Horizontal Single Row ===== */
+    .chart-summary-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xs);
+        padding: var(--spacing-sm);
+    }
+    
+    .summary-stat {
+        padding: var(--spacing-xs);
+    }
+    
+    .summary-stat-value {
+        font-size: var(--font-size-base);
+        margin-bottom: 2px;
+    }
+    
+    .summary-stat-label {
+        font-size: 9px;
+        line-height: 1.2;
+    }
+    
+    /* ===== RECENT ACTIVITY - Compact ===== */
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    .heading-2 {
+        font-size: var(--font-size-base);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .activity-list {
+        gap: var(--spacing-sm);
+    }
+    
+    .activity-item {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .activity-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .activity-icon .icon-sm {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .activity-title {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+    
+    .activity-subtitle {
+        font-size: 11px;
+    }
+    
+    .activity-time {
+        font-size: 10px;
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (max-width: 480px) ===== */
+@media (max-width: 480px) {
+    
+    /* ===== Even More Compact Stats ===== */
+    .stats-grid {
+        gap: 6px;
+    }
+    
+    .stat-card {
+        padding: var(--spacing-sm);
+    }
+    
+    .stat-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 6px;
+    }
+    
+    .text-label {
+        font-size: 10px;
+    }
+    
+    .stat-value {
+        font-size: var(--font-size-base);
+    }
+    
+    .stat-change,
+    .stat-message {
+        font-size: 9px;
+    }
+    
+    /* ===== Smaller Chart ===== */
+    .chart-container {
+        height: 200px;
+    }
+    
+    .bar-chart {
+        height: 160px;
+        grid-template-columns: 24px 1fr;
+    }
+    
+    .bar-item {
+        max-width: 36px;
+    }
+    
+    .bar {
+        max-width: 32px;
+    }
+    
+    .summary-stat-value {
+        font-size: var(--font-size-sm);
+    }
+    
+    .summary-stat-label {
+        font-size: 8px;
+    }
+}
+
+/* ===== LANDSCAPE MODE ===== */
+@media (max-width: 768px) and (orientation: landscape) {
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .content-grid {
+        grid-template-columns: 1.5fr 1fr;
     }
 }

@@ -78,7 +78,7 @@
     text-transform: uppercase;
 }
 
-/* Calendar days container - FIXED ROWS */
+/* ===== CALENDAR DAYS CONTAINER ===== */
 #calendarDays {
     grid-column: 1 / -1;
     display: grid;
@@ -592,5 +592,206 @@
         top: var(--spacing-md);
         right: var(--spacing-md);
         left: var(--spacing-md);
+    }
+}
+
+/* ========================================
+   MOBILE-OPTIMIZED CALENDAR CSS 📱
+   ======================================== */
+
+/* ===== BASE RESPONSIVE FIXES ===== */
+
+@media (max-width: 768px) {
+    /* Calendar Content Grid */
+    .calendar-content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    /* Calendar Card Padding */
+    .calendar-card {
+        padding: var(--spacing-lg);
+    }
+
+    /* Month Navigation - Smaller */
+    .month-navigation {
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .current-month {
+        font-size: var(--font-size-lg);
+        min-width: 140px;
+    }
+
+    .month-nav-btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    /* Calendar Grid - Adjust Spacing */
+    .calendar-grid {
+        gap: 2px;
+    }
+
+    /* Day Headers - Smaller */
+    .calendar-day-header {
+        padding: var(--spacing-xs);
+        font-size: 10px;
+    }
+
+    /* Calendar Days - Smaller Height */
+    #calendarDays {
+        gap: 2px;
+        grid-template-rows: repeat(6, 70px); /* Reduced from 90px */
+    }
+
+    /* Individual Day Cell */
+    .calendar-day {
+        padding: 4px;
+        min-height: 70px; /* Match grid row height */
+    }
+
+    .day-number {
+        font-size: 12px;
+        margin-bottom: 2px;
+    }
+
+    /* Event Badges - Much Smaller */
+    .event-badges {
+        gap: 2px;
+        margin-top: 2px;
+    }
+
+    .event-badge {
+        font-size: 8px;
+        padding: 2px 4px;
+        line-height: 1.2;
+    }
+
+    .event-more {
+        font-size: 8px;
+        margin-top: 1px;
+    }
+
+    /* Sidebar Adjustments */
+    .calendar-sidebar {
+        gap: var(--spacing-md);
+    }
+
+    /* Add Event Card */
+    .add-event-card {
+        padding: var(--spacing-lg);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Upcoming Events */
+    .upcoming-events-card {
+        position: relative;
+        top: 0;
+    }
+
+    .upcoming-events-list {
+        max-height: 300px;
+    }
+
+    /* Notification */
+    .notification {
+        top: var(--spacing-md);
+        right: var(--spacing-md);
+        left: var(--spacing-md);
+        padding: var(--spacing-md);
+    }
+
+    .notification-text {
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ===== EXTRA SMALL MOBILE (below 480px) ===== */
+
+@media (max-width: 480px) {
+    /* Even Smaller Calendar */
+    #calendarDays {
+        grid-template-rows: repeat(6, 60px); /* Further reduced */
+    }
+
+    .calendar-day {
+        padding: 3px;
+        min-height: 60px;
+    }
+
+    .day-number {
+        font-size: 11px;
+    }
+
+    .event-badge {
+        font-size: 7px;
+        padding: 1px 3px;
+    }
+
+    .calendar-day-header {
+        font-size: 9px;
+        padding: 4px 2px;
+    }
+
+    /* Hide "Add Event" text on very small screens */
+    .btn-full .icon-sm {
+        margin-right: 0;
+    }
+
+    /* Month Navigation */
+    .current-month {
+        font-size: var(--font-size-base);
+        min-width: 120px;
+    }
+
+    .month-nav-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    /* Form adjustments */
+    .form-input {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    .color-option {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* ===== LANDSCAPE MODE OPTIMIZATION ===== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+    #calendarDays {
+        grid-template-rows: repeat(6, 80px);
+    }
+
+    .calendar-day {
+        min-height: 80px;
+    }
+}
+
+/* ===== FIX: Prevent overflow issues ===== */
+
+@media (max-width: 768px) {
+    .calendar-card {
+        overflow-x: auto;
+    }
+
+    .calendar-grid {
+        min-width: 100%;
+    }
+
+    /* Ensure days don't break layout */
+    .calendar-day {
+        overflow: hidden;
+        word-break: break-word;
     }
 }

@@ -1,5 +1,4 @@
-    // Custom time input - Simple: select all on focus, free
-    /* ========================================
+ e/* ========================================
    STUDY SESSION JAVASCRIPT - Complete Logic ⏱️
    ======================================== */
 

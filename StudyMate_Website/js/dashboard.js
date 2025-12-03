@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Update button text
             const spans = toggleChartBtn.querySelectorAll('span');
-            const textSpan = spans[spans.length - 1]; // Get the last span (the text)
+            const textSpan = spans[spans.length - 1];
             if (chartContainer.classList.contains('hidden')) {
                 textSpan.textContent = 'Show';
             } else {
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Create tooltip element
             const tooltip = document.createElement('div');
             tooltip.className = 'bar-tooltip';
-            bar.appendChild(tooltip); // Changed from barItem.appendChild to bar.appendChild
+            bar.appendChild(tooltip); 
             
             // Build tooltip content
             let tooltipContent = '';
@@ -140,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     navItems.forEach(item => {
         item.addEventListener('click', function(e) {
-            // Only prevent default if it's a hash link
             if (this.getAttribute('href') === '#') {
                 e.preventDefault();
             }
@@ -301,6 +300,4 @@ function getTimeGreeting() {
 // Update user greeting if needed (optional enhancement)
 const userGreeting = document.querySelector('.user-status');
 if (userGreeting && userGreeting.textContent === 'Ready to study?') {
-    // Keep the default greeting, but you can customize it here
-    // userGreeting.textContent = getTimeGreeting() + '!';
 }

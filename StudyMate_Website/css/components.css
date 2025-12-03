@@ -1,5 +1,5 @@
 /* ========================================
-   REUSABLE COMPONENTS - VIBRANT DREAMY PEACH 🎨
+             REUSABLE COMPONENTS 
    Contains: Cards, Buttons, Icons, Typography
    ======================================== */
 
@@ -176,7 +176,7 @@ body {
     background-color: rgba(255, 255, 255, 0.25);
 }
 
-/* ===== DATE PICKER MODAL (REUSABLE!) ===== */
+/* ===== DATE PICKER MODAL ===== */
 
 .date-picker-overlay {
     position: fixed;

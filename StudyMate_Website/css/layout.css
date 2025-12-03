@@ -13,7 +13,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ✨ SPARKLY BACKGROUND EFFECT ✨ */
+/* SPARKLY BACKGROUND EFFECT */
 body::before {
     content: '';
     position: fixed;
@@ -75,7 +75,7 @@ body::after {
     top: 0;
 }
 
-/* Logo Section */
+/* ===== LOGO SECTION ===== */
 .logo-section {
     margin-bottom: var(--spacing-2xl);
 }
@@ -117,7 +117,7 @@ body::after {
     font-weight: var(--font-weight-medium);
 }
 
-/* User Greeting */
+/* ===== USER GREETING ===== */
 .user-greeting {
     display: flex;
     align-items: center;
@@ -156,7 +156,7 @@ body::after {
     color: var(--color-secondary);
 }
 
-/* Navigation Menu */
+/* ===== NAVIGATION MENU ===== */
 .nav-menu {
     flex: 1;
     display: flex;

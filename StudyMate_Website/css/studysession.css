@@ -182,7 +182,7 @@
     transform: translateY(0);
 }
 
-/* ===== CUSTOM INPUT - Fixed Design ===== */
+/* ===== CUSTOM INPUT ===== */
 
 .custom-input-container {
     display: flex;
@@ -210,7 +210,7 @@
     text-align: center;
 }
 
-/* Time Input Group - One Row Design */
+/* Time Input Group */
 .time-input-group {
     display: flex;
     align-items: center;
