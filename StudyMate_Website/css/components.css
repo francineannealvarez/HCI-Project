@@ -1,6 +1,6 @@
 /* ========================================
              REUSABLE COMPONENTS 
-   Contains: Cards, Buttons, Icons, Typography
+   Contains: Cards, Buttons, Icons, Typography, Dialogs
    ======================================== */
 
 /* ===== RESET & BASE ===== */
@@ -129,12 +129,24 @@ body {
 }
 
 .btn--secondary {
-    background: linear-gradient(135deg, var(--color-pink), var(--color-accent));
-    color: var(--color-white);
+    background: linear-gradient(135deg, rgba(255, 158, 191, 0.4), rgba(255, 186, 168, 0.4));
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .btn--secondary:hover {
-    background: linear-gradient(135deg, var(--color-dark-pink), var(--color-peach-dark));
+    background: linear-gradient(135deg, rgba(255, 158, 191, 0.5), rgba(255, 186, 168, 0.5));
+}
+
+/* When enabled - vivid colors */
+.btn--secondary:not(.btn-disabled) {
+    background: linear-gradient(135deg, #D6567A, #FF8B6D) !important;
+    color: var(--color-white) !important;
+}
+
+.btn--secondary:not(.btn-disabled):hover {
+    background: linear-gradient(135deg, #D6567A, #FF8B6D) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(214, 86, 122, 0.4);
 }
 
 .btn--outline {
@@ -158,6 +170,15 @@ body {
     background: rgba(93, 78, 109, 0.15);
 }
 
+.btn--danger {
+    background: linear-gradient(135deg, var(--color-error), #FF758D);
+    color: var(--color-white);
+}
+
+.btn--danger:hover {
+    background: linear-gradient(135deg, #D63E5D, var(--color-error));
+}
+
 .btn-close {
     width: 32px;
     height: 32px;
@@ -174,6 +195,172 @@ body {
 
 .btn-close:hover {
     background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ===== DIALOG/MODAL OVERLAY ===== */
+
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 31, 61, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.2s ease;
+    padding: var(--spacing-lg);
+}
+
+.dialog-overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== DIALOG/MODAL CONTENT ===== */
+
+.dialog-modal {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 12px 40px rgba(42, 31, 61, 0.3);
+    padding: var(--spacing-2xl);
+    max-width: 420px;
+    width: 100%;
+    animation: slideUp 0.3s ease;
+    position: relative;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dialog-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.dialog-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.dialog-icon--warning {
+    background: linear-gradient(135deg, rgba(232, 93, 117, 0.2), rgba(255, 158, 191, 0.2));
+}
+
+.dialog-icon--warning .icon {
+    color: var(--color-error);
+}
+
+.dialog-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.dialog-message {
+    font-size: var(--font-size-base);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--spacing-2xl);
+}
+
+.dialog-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: flex-end;
+}
+
+.dialog-actions .btn {
+    flex: 1;
+}
+
+/* ===== NOTIFICATION STYLES ===== */
+
+.notification {
+    position: fixed;
+    top: var(--spacing-xl);
+    right: var(--spacing-xl);
+    background: var(--color-white);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    z-index: 10001;
+    animation: slideInRight 0.3s ease;
+    max-width: 400px;
+}
+
+@keyframes slideInRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(100px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+.notification.hidden {
+    display: none;
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.notification--success .notification-icon {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(129, 199, 132, 0.2));
+}
+
+.notification--success .notification-icon .icon {
+    color: var(--color-success);
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-xs);
+    font-size: var(--font-size-base);
+}
+
+.notification-message {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
 }
 
 /* ===== DATE PICKER MODAL ===== */
@@ -196,11 +383,6 @@ body {
     display: none;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
 .date-picker-modal {
     background: var(--color-white);
     border-radius: var(--radius-lg);
@@ -208,11 +390,6 @@ body {
     padding: var(--spacing-xl);
     min-width: 280px;
     animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 .date-picker-header {

@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let taskIdCounter = 6;
     let notificationTimeout = null;
+
+    addTaskSubmitBtn.classList.add('btn-disabled');
+    addTaskSubmitBtn.disabled = true;
     
     const today = new Date();
     today.setHours(0, 0, 0, 0);

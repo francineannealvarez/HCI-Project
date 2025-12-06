@@ -71,6 +71,28 @@
                 </svg>
                 <span>Calendar</span>
             </a>
+
+            <!-- Divider -->
+            <div class="nav-divider"></div>
+
+            <!-- Settings Button -->
+            <button class="nav-item" id="settingsBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span>Settings</span>
+            </button>
+
+            <!-- Logout Button -->
+            <button class="nav-item nav-item--logout" id="logoutBtn">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span>Logout</span>
+            </button>
         </nav>
     </aside>
 
@@ -101,8 +123,66 @@
                     <!-- Pomodoro Timer Tab -->
                     <div class="tab-content tab-content--active" id="pomodoro-tab">
                         <div class="card timer-card">
-                            <!-- Focus Time Badge -->
-                            <div class="focus-badge">
+                            <!-- Stats Cards -->
+                            <div class="pomodoro-stats">
+                                <div class="stat-box">
+                                    <p class="stat-box-label">Sessions Today</p>
+                                    <p class="stat-box-value" id="sessionsToday">0</p>
+                                </div>
+                                <div class="stat-box">
+                                    <p class="stat-box-label">Until Long Break</p>
+                                    <p class="stat-box-value" id="untilLongBreak">4</p>
+                                </div>
+                                <div class="stat-box">
+                                    <p class="stat-box-label">Minutes Focused</p>
+                                    <p class="stat-box-value" id="minutesFocused">0</p>
+                                </div>
+                            </div>
+
+                            <!-- Mode Buttons -->
+                            <div class="pomodoro-modes">
+                                <button class="mode-btn mode-btn--active" data-mode="focus">
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <polyline points="12 6 12 12 16 14"></polyline>
+                                    </svg>
+                                    Focus
+                                </button>
+                                <button class="mode-btn" data-mode="short">
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+                                        <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+                                        <line x1="6" y1="2" x2="6" y2="4"></line>
+                                        <line x1="10" y1="2" x2="10" y2="4"></line>
+                                        <line x1="14" y1="2" x2="14" y2="4"></line>
+                                    </svg>
+                                    Short Break
+                                </button>
+                                <button class="mode-btn" data-mode="long">
+                                    <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                        <path d="M4 22h16"></path>
+                                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                                    </svg>
+                                    Long Break
+                                </button>
+                            </div>
+
+                            <!-- Subject Input (Only for Focus Mode) -->
+                            <div class="subject-input-container" id="subjectInputContainer">
+                                <input 
+                                    type="text" 
+                                    class="subject-input" 
+                                    id="subjectInput"
+                                    placeholder="What are you studying?"
+                                />
+                            </div>
+
+                            <!-- Mode Badge -->
+                            <div class="mode-badge" id="modeBadge">
                                 <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <circle cx="12" cy="12" r="10"></circle>
                                     <polyline points="12 6 12 12 16 14"></polyline>
@@ -111,8 +191,8 @@
                             </div>
 
                             <!-- Timer Circle -->
-                            <div class="timer-circle-container">
-                                <svg class="timer-circle" viewBox="0 0 200 200">
+                            <div class="timer-wrapper">
+                                <svg class="timer-svg" viewBox="0 0 200 200">
                                     <!-- Background Circle -->
                                     <circle
                                         class="timer-circle-bg"
@@ -129,67 +209,46 @@
                                         id="timerProgress"
                                     />
                                 </svg>
-                                <!-- Timer Display -->
-                                <div class="timer-display" id="timerDisplay">00:00:00</div>
-                            </div>
-
-                            <!-- Preset Buttons -->
-                            <div class="timer-presets">
-                                <button class="preset-btn" data-minutes="25">25 min</button>
-                                <button class="preset-btn" data-minutes="15">15 min</button>
-                                <button class="preset-btn" data-minutes="5">5 min</button>
-                                <button class="preset-btn" data-minutes="custom">Custom</button>
-                            </div>
-
-                            <!-- Custom Input (Hidden by default) -->
-                            <div class="custom-input-container hidden" id="customInputContainer">
-                                <label class="input-label">Enter Time (HH:MM:SS)</label>
-                                <div class="time-input-group">
-                                    <input 
-                                        type="text" 
-                                        class="time-segment" 
-                                        id="hoursSegment"
-                                        maxlength="2"
-                                        placeholder="00"
-                                        value="00"
-                                    />
-                                    <span class="time-separator">:</span>
-                                    <input 
-                                        type="text" 
-                                        class="time-segment" 
-                                        id="minutesSegment"
-                                        maxlength="2"
-                                        placeholder="00"
-                                        value="00"
-                                    />
-                                    <span class="time-separator">:</span>
-                                    <input 
-                                        type="text" 
-                                        class="time-segment" 
-                                        id="secondsSegment"
-                                        maxlength="2"
-                                        placeholder="00"
-                                        value="00"
-                                    />
+                                <div class="timer-content">
+                                    <div class="timer-time" id="timerDisplay">25:00</div>
+                                    <div class="timer-message" id="timerMessage">Stay focused! You've got this! 💪</div>
                                 </div>
-                                <button class="btn btn--secondary btn-sm" id="setCustomTime">Set Time</button>
                             </div>
 
-                            <!-- Timer Controls -->
-                            <div class="timer-controls">
-                                <button class="btn btn--primary" id="startBtn">
+                            <!-- Progress Bar -->
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="progressBar"></div>
+                            </div>
+
+                            <!-- Control Buttons -->
+                            <div class="timer-actions">
+                                <button class="timer-control-btn timer-control-btn--primary" id="startBtn">
                                     <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
                                     </svg>
                                     Start
                                 </button>
-                                <button class="btn btn--outline btn-disabled" id="resetBtn" disabled>
+                                <button class="timer-control-btn timer-control-btn--secondary" id="resetBtn">
                                     <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <polyline points="1 4 1 10 7 10"></polyline>
                                         <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
                                     </svg>
                                     Reset
                                 </button>
+                            </div>
+
+                            <!-- Timer Settings Link -->
+                            <button class="timer-settings-link" id="timerSettingsBtn">
+                                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
+                                </svg>
+                                Customize Timer
+                            </button>
+
+                            <!-- Tip Message -->
+                            <div class="tip-message" id="tipMessage">
+                                💡 Tip: Complete 4 focus sessions to earn a long break!
                             </div>
                         </div>
                     </div>
@@ -198,6 +257,7 @@
                     <div class="tab-content" id="log-tab">
                         <div class="card log-card">
                             <h3 class="heading-2">Log Study Hours</h3>
+                            <p class="log-description">Use this to manually log study hours if you didn't use the Pomodoro timer.</p>
 
                             <div class="log-form">
                                 <div class="form-group">
@@ -205,7 +265,7 @@
                                     <input 
                                         type="text" 
                                         class="form-input" 
-                                        id="subjectInput"
+                                        id="logSubjectInput"
                                         placeholder="e.g., Mathematics"
                                     />
                                 </div>
@@ -222,7 +282,7 @@
                                     />
                                 </div>
 
-                                <button class="btn btn--primary btn-full btn-disabled" id="logHoursBtn" disabled>
+                                <button class="btn btn--secondary btn-full btn-disabled" id="logHoursBtn" disabled>
                                     <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <line x1="12" y1="5" x2="12" y2="19"></line>
                                         <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -286,6 +346,92 @@
         </div>
     </main>
 
+    <!-- Settings Dialog -->
+    <div class="dialog-overlay hidden" id="settingsDialog">
+        <div class="dialog-modal settings-modal">
+            <div class="settings-header">
+                <h3 class="dialog-title">Pomodoro Timer Settings</h3>
+                <button class="btn-close" id="closeSettings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="settings-content">
+                <div class="settings-group">
+                    <label class="settings-label">Focus Duration (minutes)</label>
+                    <input type="number" class="settings-input" id="focusDuration" value="25" min="1" max="60">
+                </div>
+
+                <div class="settings-group">
+                    <label class="settings-label">Short Break (minutes)</label>
+                    <input type="number" class="settings-input" id="shortBreakDuration" value="5" min="1" max="15">
+                </div>
+
+                <div class="settings-group">
+                    <label class="settings-label">Long Break (minutes)</label>
+                    <input type="number" class="settings-input" id="longBreakDuration" value="15" min="1" max="30">
+                </div>
+
+                <div class="settings-toggle">
+                    <label class="settings-label">Auto-start Breaks</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="autoStartBreaks">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="settings-toggle">
+                    <label class="settings-label">Auto-start Focus</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="autoStartFocus">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+
+                <div class="settings-toggle">
+                    <label class="settings-label">
+                        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        Sound Notifications
+                    </label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="soundNotifications" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn--primary btn-full" id="saveSettings">Save Settings</button>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Dialog -->
+    <div class="dialog-overlay hidden" id="logoutDialog">
+        <div class="dialog-modal">
+            <div class="dialog-header">
+                <div class="dialog-icon dialog-icon--warning">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                </div>
+                <h3 class="dialog-title">Confirm Logout</h3>
+            </div>
+            <p class="dialog-message">Are you sure you want to logout? You'll need to login again to access your account.</p>
+            <div class="dialog-actions">
+                <button class="btn btn--outline" id="cancelLogout">Cancel</button>
+                <button class="btn btn--danger" id="confirmLogout">Logout</button>
+            </div>
+        </div>
+    </div>v>
+
     <script src="js/studysession.js"></script>
+    <script src="js/logout.js"></script>
 </body>
 </html>

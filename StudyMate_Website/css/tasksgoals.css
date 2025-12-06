@@ -32,21 +32,6 @@
     margin-top: var(--spacing-xs);
 }
 
-/* Add Task Button - Active State */
-#addTaskBtn.form-active {
-    background: linear-gradient(135deg, #D6567A, #FF8B6D) !important;
-    color: var(--color-white) !important;
-    border: none !important;
-    transform: none !important;
-}
-
-#addTaskBtn.form-active:hover {
-    background: linear-gradient(135deg, #D6567A, #FF8B6D) !important;
-    color: var(--color-white) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(214, 86, 122, 0.4) !important;
-}
-
 /* ===== ADD TASK FORM ===== */
 
 .add-task-form {
