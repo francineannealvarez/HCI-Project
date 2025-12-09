@@ -1,5 +1,5 @@
 /* ========================================
-   AUTH.JS - Form Validation & Navigation
+   AUTH JAVASCRIPT - Form Validation & Navigation
    Handles login and signup functionality
    ======================================== */
 
@@ -69,7 +69,7 @@ function clearAllErrors() {
     });
 }
 
-// ===== PASSWORD TOGGLE - IMPROVED VERSION =====
+// ===== PASSWORD TOGGLE =====
 
 function setupPasswordToggle(toggleBtnId, inputId) {
     const toggleBtn = document.getElementById(toggleBtnId);

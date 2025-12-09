@@ -1,9 +1,10 @@
 /* ========================================
                 DASHBOARD.CSS 
    Contains: Chart components, Daily quote, Stats grid layout
+   NOTE: Navigation styles come from layout.css
    ======================================== */
 
-/* ===== STATS GRID LAYOUT (Dashboard only) ===== */
+/* ===== STATS GRID LAYOUT ===== */
 
 .stats-grid {
     display: grid;
@@ -12,7 +13,7 @@
     margin-bottom: var(--spacing-2xl);
 }
 
-/* ===== DAILY QUOTE SECTION (Dashboard only) ===== */
+/* ===== DAILY QUOTE SECTION ===== */
 
 .daily-quote-section {
     margin-bottom: var(--spacing-2xl);
@@ -22,7 +23,7 @@
     width: 100%;
 }
 
-/* ===== CONTENT GRID (Dashboard only) ===== */
+/* ===== CONTENT GRID ===== */
 
 .content-grid {
     display: grid;
@@ -31,7 +32,7 @@
     margin-bottom: var(--spacing-xl);
 }
 
-/* ===== BAR CHART COMPONENTS (Dashboard only) ===== */
+/* ===== BAR CHART COMPONENTS ===== */
 
 .chart-card {
     overflow: visible;
@@ -291,7 +292,7 @@
     font-weight: var(--font-weight-medium);
 }
 
-/* ===== RESPONSIVE - DASHBOARD SPECIFIC ===== */
+/* ===== RESPONSIVE - DASHBOARD SPECIFIC (Content Only, NOT Navigation) ===== */
 
 /* Tablet */
 @media (max-width: 1024px) {
@@ -306,186 +307,18 @@
     }
 }
 
-/* Mobile */
+/* Mobile - Content adjustments only */
 @media (max-width: 768px) {
-    .stats-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-    
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .chart-container {
-        height: 280px;
-    }
-    
-    .bar-chart {
-        height: 220px;
-        gap: var(--spacing-sm);
-    }
-    
-    .bar-item {
-        max-width: 60px;
-    }
-    
-    .bar {
-        max-width: 50px;
-    }
-    
-    .chart-summary-stats {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-md);
-    }
-}
-
-/* ========================================
-   MOBILE-OPTIMIZED DASHBOARD CSS 📱
-   Smart layout for dashboard on mobile
-   ======================================== */
-
-/* ===== TABLET ADJUSTMENTS (max-width: 1024px) ===== */
-@media (max-width: 1024px) {
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-    }
-    
-    .content-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
-    }
-}
-
-/* ===== MOBILE OPTIMIZATIONS (max-width: 768px) ===== */
-@media (max-width: 768px) {
-    
-    /* ===== LOGO & USER GREETING - Compact Header ===== */
-    .logo-section {
-        margin-bottom: var(--spacing-md);
-    }
-    
-    .logo-icon {
-        width: 42px;
-        height: 42px;
-        font-size: 22px;
-    }
-    
-    .logo-title {
-        font-size: 20px;
-    }
-    
-    .logo-subtitle {
-        font-size: var(--font-size-sm);
-    }
-    
-    .user-greeting {
-        display: flex !important;
-        margin-bottom: var(--spacing-md);
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-    
-    .user-avatar {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .user-avatar .icon {
-        width: 16px;
-        height: 16px;
-    }
-    
-    .user-name {
-        font-size: var(--font-size-sm);
-    }
-    
-    .user-status {
-        font-size: 11px;
-    }
-    
-    /* ===== NAVIGATION - Horizontal with Hover Labels ===== */
-    .nav-menu {
-        flex-direction: row !important;
-        justify-content: space-between;
-        gap: 0;
-        padding: var(--spacing-sm) 0;
-        overflow-x: visible;
-    }
-    
-    .nav-item {
-        flex: 1;
-        flex-direction: column;
-        gap: 4px;
-        padding: var(--spacing-sm);
-        position: relative;
-        align-items: center;
-        justify-content: center;
-        min-height: 56px;
-    }
-    
-    .nav-item .icon {
-        width: 22px;
-        height: 22px;
-    }
-    
-    /* Hide text by default */
-    .nav-item span {
-        position: absolute;
-        bottom: 4px;
-        font-size: 10px;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        pointer-events: none;
-        white-space: nowrap;
-    }
-    
-    /* Show text on hover */
-    .nav-item:hover span,
-    .nav-item--active span {
-        opacity: 1;
-    }
-    
-    /* Active state - always show text */
-    .nav-item--active {
-        flex-direction: column;
-    }
-    
-    .nav-item--active span {
-        position: relative;
-        bottom: auto;
-        opacity: 1;
-    }
-    
-    /* ===== PAGE HEADER - Compact ===== */
-    .page-header {
-        margin-bottom: var(--spacing-lg);
-    }
-    
-    .heading-1 {
-        font-size: var(--font-size-xl);
-    }
-    
-    .page-header .text-secondary {
-        font-size: 12px;
-    }
-    
-    /* ===== STATS GRID - 2x2 Square Grid ===== */
+    /* Stats Grid - 2x2 */
     .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: var(--spacing-sm);
         margin-bottom: var(--spacing-lg);
     }
     
-    /* ===== STAT CARDS - Compact Squares ===== */
+    /* Stat Cards - Compact */
     .stat-card {
         padding: var(--spacing-md);
-        aspect-ratio: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
     }
     
     .stat-icon {
@@ -520,7 +353,7 @@
         height: 12px;
     }
     
-    /* ===== DAILY QUOTE - Slim ===== */
+    /* Daily Quote - Slim */
     .daily-quote-section {
         margin-bottom: var(--spacing-lg);
     }
@@ -547,13 +380,12 @@
         line-height: 1.4;
     }
     
-    /* ===== CONTENT GRID ===== */
+    /* Content Grid */
     .content-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
     }
     
-    /* ===== CHART CARD - Optimized ===== */
+    /* Chart Card */
     .chart-card {
         padding: var(--spacing-md);
     }
@@ -578,7 +410,7 @@
         font-size: 11px;
     }
     
-    /* ===== CHART CONTAINER - Reduced Left Margin ===== */
+    /* Chart Container */
     .chart-container {
         height: 220px;
         margin-bottom: var(--spacing-sm);
@@ -590,7 +422,7 @@
         gap: 8px;
     }
     
-    /* ===== Y-AXIS - Minimal Space ===== */
+    /* Y-Axis */
     .y-axis {
         padding-bottom: 28px;
     }
@@ -604,7 +436,7 @@
         font-size: 9px;
     }
     
-    /* ===== BARS ===== */
+    /* Bars */
     .bars-container {
         padding-bottom: 28px;
         gap: 3px;
@@ -623,7 +455,7 @@
         bottom: -24px;
     }
     
-    /* ===== TOOLTIP ===== */
+    /* Tooltip */
     .bar-tooltip {
         padding: 8px 12px;
         font-size: 10px;
@@ -639,7 +471,7 @@
         font-size: 10px;
     }
     
-    /* ===== SUMMARY STATS - Horizontal Single Row ===== */
+    /* Summary Stats */
     .chart-summary-stats {
         grid-template-columns: repeat(3, 1fr);
         gap: var(--spacing-xs);
@@ -660,7 +492,7 @@
         line-height: 1.2;
     }
     
-    /* ===== RECENT ACTIVITY - Compact ===== */
+    /* Recent Activity */
     .card {
         padding: var(--spacing-md);
     }
@@ -703,10 +535,8 @@
     }
 }
 
-/* ===== EXTRA SMALL MOBILE (max-width: 480px) ===== */
+/* Extra Small Mobile */
 @media (max-width: 480px) {
-    
-    /* ===== Even More Compact Stats ===== */
     .stats-grid {
         gap: 6px;
     }
@@ -734,7 +564,6 @@
         font-size: 9px;
     }
     
-    /* ===== Smaller Chart ===== */
     .chart-container {
         height: 200px;
     }
@@ -761,7 +590,7 @@
     }
 }
 
-/* ===== LANDSCAPE MODE ===== */
+/* Landscape Mode */
 @media (max-width: 768px) and (orientation: landscape) {
     .stats-grid {
         grid-template-columns: repeat(4, 1fr);

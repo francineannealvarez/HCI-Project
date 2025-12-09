@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const barItems = document.querySelectorAll('.bar-item');
     
     if (barChart && barItems.length > 0) {
-        const MAX_HOURS = 10; // Y-axis goes from 0-10
+        const MAX_HOURS = 10; 
         
         barItems.forEach(barItem => {
             const bar = barItem.querySelector('.bar');

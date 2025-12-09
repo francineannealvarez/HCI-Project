@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     /* ===== DOM ELEMENTS ===== */
-    
     const addTaskBtn = document.getElementById('addTaskBtn');
     const addTaskForm = document.getElementById('addTaskForm');
     const cancelTaskBtn = document.getElementById('cancelTaskBtn');

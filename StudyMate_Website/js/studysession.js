@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    /* ===== ELEMENTS ===== */
+        /* ===== DOM ELEMENTS ===== */
     const modeBtns = document.querySelectorAll('.mode-btn');
     const subjectInputContainer = document.getElementById('subjectInputContainer');
     const subjectInput = document.getElementById('subjectInput');

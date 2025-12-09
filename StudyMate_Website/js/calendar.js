@@ -1,5 +1,5 @@
 /* ========================================
-   STUDY CALENDAR JAVASCRIPT - Interactive Schedule 📅
+   CALENDAR JAVASCRIPT - Interactive Schedule 📅
    ======================================== */
 
 document.addEventListener('DOMContentLoaded', function() {

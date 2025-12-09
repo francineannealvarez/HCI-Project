@@ -1,5 +1,5 @@
 /* ========================================
-   STUDY CALENDAR CSS - Events & Schedule 📅
+   CALENDAR CSS - Events & Schedule 📅
    ======================================== */
 
 /* ===== LAYOUT ===== */
@@ -629,27 +629,27 @@
         height: 32px;
     }
 
-    /* Calendar Grid - Adjust Spacing */
+    /* Calendar Grid */
     .calendar-grid {
         gap: 2px;
     }
 
-    /* Day Headers - Smaller */
+    /* Day Headers */
     .calendar-day-header {
         padding: var(--spacing-xs);
         font-size: 10px;
     }
 
-    /* Calendar Days - Smaller Height */
+    /* Calendar Days */
     #calendarDays {
         gap: 2px;
-        grid-template-rows: repeat(6, 70px); /* Reduced from 90px */
+        grid-template-rows: repeat(6, 70px); 
     }
 
     /* Individual Day Cell */
     .calendar-day {
         padding: 4px;
-        min-height: 70px; /* Match grid row height */
+        min-height: 70px; 
     }
 
     .day-number {
@@ -657,7 +657,7 @@
         margin-bottom: 2px;
     }
 
-    /* Event Badges - Much Smaller */
+    /* Event Badges */
     .event-badges {
         gap: 2px;
         margin-top: 2px;
@@ -716,7 +716,7 @@
 @media (max-width: 480px) {
     /* Even Smaller Calendar */
     #calendarDays {
-        grid-template-rows: repeat(6, 60px); /* Further reduced */
+        grid-template-rows: repeat(6, 60px); 
     }
 
     .calendar-day {

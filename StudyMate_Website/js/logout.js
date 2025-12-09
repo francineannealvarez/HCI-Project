@@ -1,9 +1,9 @@
 /* ========================================
-   LOGOUT.JS - Logout Functionality
+   LOGOUT JAVASCRIPT - Logout Functionality
    Handles logout confirmation and redirects
    ======================================== */
 
-// Get elements
+    /* ===== DOM ELEMENTS ===== */
 const logoutBtn = document.getElementById('logoutBtn');
 const settingsBtn = document.getElementById('settingsBtn');
 const logoutDialog = document.getElementById('logoutDialog');
